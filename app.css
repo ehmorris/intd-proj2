@@ -8,3 +8,8 @@ body {
   padding: 0;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased; }
+
+#starfield {
+  background: #000;
+  height: 100%;
+  width: 100%; }
