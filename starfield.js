@@ -102,13 +102,6 @@ function anim()
   timeout=setTimeout('anim()',fps);
   }
 
-function move(evt)
-  {
-  evt=evt||event;
-  cursor_x=evt.pageX-canvas_x;
-  cursor_y=evt.pageY-canvas_y;
-  }
-
 function key_manager(evt)
   {
   evt=evt||event;
@@ -183,7 +176,6 @@ function resize()
   init();
   }
 
-document.onmousemove=move;
 document.onkeypress=key_manager;
 document.onkeyup=release;
 document.onmousewheel=mouse_wheel; if(window.addEventListener) window.addEventListener('DOMMouseScroll',mouse_wheel,false);
