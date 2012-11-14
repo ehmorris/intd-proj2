@@ -9,27 +9,48 @@
     <link type="text/css" rel="stylesheet" href="app.css" />
   </head>
   <body>
+    <aside data-modal="1">
+      <h1>Fact title</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis tellus sapien. Suspendisse aliquet nisi id lacus volutpat lobortis.</p>
+    </aside>
+    <aside data-modal="2">
+      <h1>Fact title 2</h1>
+      <p>Aenean fringilla elementum mauris ac adipiscing. In porttitor tincidunt urna. Phasellus interdum dignissim enim sit amet posuere. Maecenas congue lectus et augue dapibus faucibus vitae non enim. Phasellus fringilla leo laoreet nisi interdum ornare. Proin a sapien massa.</p>
+    </aside>
+    <aside data-modal="3">
+      <h1>Fact title 3</h1>
+      <p>different</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis tellus sapien. Suspendisse aliquet nisi id lacus volutpat lobortis.</p>
+    </aside>
+    <aside data-modal="4">
+      <h1>Fact title different</h1>
+      <p>another</p>
+    </aside>
+    <aside data-modal="5">
+      <h1>Fact title</h1>
+      <p>thing</p>
+    </aside>
+    <aside data-modal="6">
+      <h1>Fact title another</h1>
+      <p>something</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque quis tellus sapien. Suspendisse aliquet nisi id lacus volutpat lobortis.</p>
+    </aside>
+    <aside data-modal="7">
+      <h1>Fact title again</h1>
+      <p>another thing</p>
+    </aside>
     <nav class="speedometer">
       <ul>
-        <li data-val="1">10</li>
-        <li data-val="2">100</li>
-        <li data-val="3">1000</li>
-        <li data-val="4">10000</li>
-        <li data-val="5">100000</li>
-        <li data-val="6">1000000</li>
-        <li data-val="7">10000000</li>
-        <li data-val="8">test</li>
-        <li data-val="9">seperate</li>
-        <li data-val="10">test test</li>
+        <li data-val="1" data-modal="1">10</li>
+        <li data-val="2" data-modal="2">100</li>
+        <li data-val="3" data-modal="3">1000</li>
+        <li data-val="4" data-modal="4">10000</li>
+        <li data-val="5" data-modal="5">100000</li>
+        <li data-val="6" data-modal="6">1000000</li>
+        <li data-val="7" data-modal="7">10000000</li>
       </ul>
     </nav>
+    <div class="overlay"></div>
     <canvas id="starfield"></canvas>
-    <script>
-      document.write(
-        '<script src="http://' + 
-        (location.host || 'localhost').split(':')[0] + 
-        ':35729/livereload.js?snipver=1"></' + 'script>'
-      )
-    </script>
   </body>
 </html>

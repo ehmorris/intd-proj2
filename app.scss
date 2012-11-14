@@ -1,6 +1,53 @@
 @import 'bourbon/bourbon';
 @import 'neat/neat';
 
+/*********************************************************/
+
+.animation-fly-in {
+  @include animation(fly-in .4s ease);
+  @include animation-fill-mode(both);
+}
+
+@mixin fly-in {
+  0% {
+    margin-right: -20%;
+    background-color: red;
+    @include position(fixed, 40% 50% 0 0);
+    @include transform(scale(.01));
+  }
+  100% {
+    @include position(fixed, 5% 5% 0 0);
+    @include transform(scale(1));
+  }
+}
+
+@-webkit-keyframes fly-in { @include fly-in; }
+   @-moz-keyframes fly-in { @include fly-in; }
+        @keyframes fly-in { @include fly-in; }
+
+.animation-fly-out {
+  @include animation(fly-out .5s ease);
+  @include animation-fill-mode(none);
+}
+
+@mixin fly-out {
+  0% {
+    opacity: 1;
+    @include transform(scale(1));
+  }
+  100% {
+    opacity: 0;
+    @include position(fixed, -2% -2% 0 0);
+    @include transform(scale(2));
+  }
+}
+
+@-webkit-keyframes fly-out { @include fly-out; }
+   @-moz-keyframes fly-out { @include fly-out; }
+        @keyframes fly-out { @include fly-out; }
+
+/*********************************************************/
+
 body {
   font-family: sans-serif;
   margin: 0;
@@ -8,6 +55,36 @@ body {
   text-rendering: optimizeLegibility;
   @include user-select(none);
   -webkit-font-smoothing: antialiased;
+}
+
+aside {
+  @extend .animation-fly-in;
+  display: none;
+  color: #fff;
+  padding: 1.5em;
+  @include position(fixed, 5% 5% 0 0);
+  width: 40%;
+  text-shadow: 0 1px 1px rgba(0,0,0,.4);
+  z-index: 100;
+  border: 1px solid white;
+  border-radius: 4px;
+  border-width: 1px 2px 2px 1px;
+  @include linear-gradient(-90deg,
+                           rgba(255, 255, 255, .9),
+                           rgba(255, 255, 255, .6),
+                           $fallback: transparent);
+
+  &.gone {
+    @extend .animation-fly-out;
+  }
+
+  h1 {
+    margin-top: 0;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
 }
 
 nav.speedometer {
@@ -28,17 +105,16 @@ nav.speedometer {
     width: 100%;
 
     li {
-      color: #ddd;
+      color: #fff;
       cursor: pointer;
       display: table-cell;
       font-weight: bold;
       padding: 2em 1em;
       text-align: center;
       text-shadow: 0 1px 0 rgba(0, 0, 0, .5);
-      @include transition;
+      @include transition(.1s);
 
       &:hover {
-        color: #fff;
         text-shadow: 0 2px 1px rgba(0, 0, 0, .8);
         @include radial-gradient(50% 10%,
                                  circle cover,
@@ -47,14 +123,20 @@ nav.speedometer {
                                  $fallback: transparent);
       }
 
-      &:active {
-        background: rgba(255, 255, 255, .5);
-        @include box-shadow(inset 0 2px 2em rgba(0, 0, 0, .6));
-        color: #fff;
-        text-shadow: 0 1px 0 #000;
+      &:active, &.active {
+        background: rgba(255, 255, 255, .6);
+        @include box-shadow(inset 0 2px 2em rgba(0, 0, 0, .4));
+        text-shadow: 0 1px 1px #000;
       }
     }
   }
+}
+
+.overlay {
+  background: rgb(255, 0, 0);
+  opacity: 0;
+  @include position(fixed, 0px 0px 0px 0px);
+  z-index: 98;
 }
 
 #starfield {
