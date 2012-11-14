@@ -16,8 +16,8 @@ nav.speedometer {
   display: block;
   @include position(fixed, 0 0px 0px 0px);
   z-index: 99;
-  @include linear-gradient(rgba(255, 255, 255, .7),
-                           rgba(255, 255, 255, .6),
+  @include linear-gradient(rgba(255, 255, 255, .8),
+                           rgba(255, 255, 255, .65),
                            $fallback: transparent);
 
   ul {

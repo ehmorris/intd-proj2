@@ -4,11 +4,8 @@ $(function() {
 
   $(window).resize(resize);
 
-  $(document).mousedown(function() {
-    context.fillStyle='rgba(0,0,0,'+opacity+')';
-  });
-
-  $(document).mouseup(function() {
-    context.fillStyle='rgb(0,0,0)';
+  $('.speedometer li').click(function() {
+    var index = $(this).index() + 1;
+    set_speed(index * 4);
   });
 });

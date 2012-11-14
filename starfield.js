@@ -47,7 +47,7 @@ var z = 0;
 var star_color_ratio = 0;
 var star_x_save,star_y_save;
 var star_ratio = 256;
-var star_speed = 4;
+var star_speed = 1;
 var star_speed_save = 0;
 var star = new Array(n);
 var color;
@@ -125,23 +125,8 @@ function key_manager(evt) {
   key = evt.which||evt.keyCode;
   //ctrl=evt.ctrlKey;
 
-  switch(key) {
-    case 27:
-    flag = flag?false:true;
-
-      if(flag) {
-        timeout = setTimeout('anim()',fps);
-      } else {
-        clearTimeout(timeout);
-      }
-      break;
-    case 32:
-      star_speed_save = (star_speed!=0)?star_speed:star_speed_save;
-      star_speed = (star_speed!=0)?0:star_speed_save;
-      break;
-    case 13:
-      context.fillStyle = 'rgba(0,0,0,'+opacity+')';
-      break;
+  if (key === 13) {
+    context.fillStyle = 'rgba(0,0,0,'+opacity+')';
   }
 
   top.status = 'key='+((key<100)?'0':'')+((key<10)?'0':'')+key;
@@ -155,23 +140,13 @@ function release() {
   }
 }
 
-function mouse_wheel(evt) {
-  evt = evt||event;
-  var delta=0;
-
-  if(evt.wheelDelta) {
-    delta = evt.wheelDelta/120;
-  } else if(evt.detail) {
-    delta =- evt.detail/3;
-  }
-
-  star_speed += (delta>=0)?-0.2:0.2;
-  if(evt.preventDefault) evt.preventDefault();
-}
-
 function start() {
   resize();
   anim();
+}
+
+function set_speed(speed) {
+  star_speed = speed;
 }
 
 function resize() {
@@ -188,4 +163,3 @@ function resize() {
 
 document.onkeypress = key_manager;
 document.onkeyup = release;
-document.onmousewheel = mouse_wheel; if(window.addEventListener) window.addEventListener('DOMMouseScroll', mouse_wheel, false);
